@@ -1,6 +1,19 @@
 # Build trees (anchored to repo root: third_party/ has a source dir
 # literally named libdecor/build, which FLTK's CMakeLists does compile)
-/build/
+#
+# /build/ is published as built artifacts only: the app bundle and the two
+# binaries are kept so they can be downloaded without compiling, while the
+# CMake internals below stay out. Note /build/* (not /build/), because git
+# cannot re-include a file whose parent directory is excluded.
+#
+# Deliberately NOT published: CMakeFiles/*.o, CMakeCache.txt (holds local
+# absolute paths), ninja logs, Testing/ and the stale pre-rename
+# DraftLaba2.app / DraftLaba2Scan.
+/build/*
+!/build/Laba2.app/
+!/build/Laba2Scan
+!/build/liblaba2_core.a
+
 /build-*/
 /cmake-build-*/
 /out/
